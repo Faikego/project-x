@@ -1,15 +1,10 @@
-
-
-
-Хули палишь?
-
-
-
 from datetime import time
 import time
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from Css import (css_search_zeon, css_search_zeon_click, css_product_zeon,
+                 css_price_zeon, css_sity, css_mysity)
 
 
 def parser():
@@ -17,26 +12,22 @@ def parser():
     browser.get('https://zeon18.ru')
     time.sleep(1)
 
-    xpath_search = '/html/body/div[2]/div/header/div/div[1]/div[1]/div[2]/div/form/div/input'
-    browser.find_element(By.XPATH, xpath_search).send_keys('Видеокарта Palit GeForce RTX 3060 Dual')
+    browser.find_element(By.CSS_SELECTOR, css_sity).click()
+    browser.find_element(By.CSS_SELECTOR, css_mysity).click()
 
-    xpath_search_click = '/html/body/div[2]/div/header/div/div[1]/div[1]/div[2]/div/form/button'
-    browser.find_element(By.XPATH, xpath_search_click).click()
+    browser.find_element(By.CSS_SELECTOR, css_search_zeon).send_keys('g 102')
+    browser.find_element(By.CSS_SELECTOR, css_search_zeon_click).click()
 
-    xpath_cat = '/html/body/div[2]/div/div[4]/div/div[2]/div/div/div[2]/div/div/div/div[1]/article/div[1]/a'
-    elem = browser.find_elements(By.XPATH, xpath_cat)
+    product = browser.find_elements(By.CSS_SELECTOR, css_product_zeon)
 
-    # xpath_price = '/html/body/div[2]/div/div[4]/div/div[2]/div/div/div[2]/div/div/div/div/article/div[2]/div[2]/div[2]/div[1]/div/div[1]/span'
-    price_ = browser.find_element(By.CLASS_NAME, 'value')
+    link = None
 
-    price = price_.get_attribute('value')
+    for i in product:
+        link = i.get_attribute('href')
 
-    site = None
+    price = browser.find_element(By.CSS_SELECTOR, css_price_zeon).text
 
-    for i in elem:
-        site = i.get_attribute('href')
-
-    return site, price
+    return link, price
 
 
 print(parser())
