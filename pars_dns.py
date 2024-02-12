@@ -1,33 +1,79 @@
 import time
 
-import undetected_chromedriver as uc
+from browser import browser_init
 from selenium.webdriver.common.by import By
-from Css import (css_search_dns, css_sity_dns_click, css_sity_search, css_sity_search_click, css_search_dns_click,
-                 css_product_dns, css_price_dns)
+from selenium.common.exceptions import NoSuchElementException
+from Css import *
+
+
+target_1 = 'Монитор MSI G274QPF'                  # 70 секунд
+target_2 = 'g 102'                                    # 92 секунд
+target_3 = 'удлинитель 2 метра'          # 80 секунд - не найден
+
+city = 'Сарапул'
 
 
 def parser_dns():
-    browser = uc.Chrome()
-    browser.get('https://www.dns-shop.ru')
-    time.sleep(0.3)
+    start = time.time()
+    browser = browser_init('https://www.dns-shop.ru')
+    time.sleep(1)
     browser.find_element(By.CSS_SELECTOR, css_sity_dns_click).click()
-    time.sleep(0.3)
-    browser.find_element(By.CSS_SELECTOR, css_sity_search).send_keys('Сарапул')
+    time.sleep(1)
+    browser.find_element(By.CSS_SELECTOR, css_sity_search).send_keys(city)
     browser.find_element(By.CSS_SELECTOR, css_sity_search_click).click()
-    time.sleep(0.3)
-    browser.find_element(By.CSS_SELECTOR, css_search_dns).send_keys('macbook air')
-    time.sleep(0.3)
-    browser.find_element(By.CSS_SELECTOR, css_search_dns_click).click()
-    product = browser.find_elements(By.CSS_SELECTOR, css_product_dns)
-    link = None
-    for i in product:
-        link = i.get_attribute('href')
-    time.sleep(0.3)
-    price = browser.find_element(By.CSS_SELECTOR, '#search-results > div.products-list > div > div.catalog-products.view-simple > div:nth-child(1) > div.product-buy.product-buy_one-line.catalog-product__buy > div > div.product-buy__price').text
+    time.sleep(1)
+    element = browser.find_element(By.CSS_SELECTOR, css_search_dns)
+    time.sleep(1)
+    element.send_keys(target_2)
+    search = browser.find_element(By.CSS_SELECTOR, css_search_dns_click)
+    search.click()
+    time.sleep(1)
 
-    return link, price
+    stopper_1 = 0
+    stopper_2 = 0
+
+    if stopper_1 == 0 and stopper_2 == 0:
+        try:
+            name = browser.find_element(By.XPATH, xpath_name_product_dns)
+            time.sleep(1)
+            price = browser.find_element(By.XPATH, xpath_price_dns)
+        except NoSuchElementException:
+            stopper_2 += 1
+        else:
+            name = name.text
+            price = price.text
+            price = price.split('₽')
+            browser.close()
+            stopper_1 += 1
+            finish = time.time()
+            res = finish - start
+            return name, price[0], res
+
+    if stopper_1 == 0 and stopper_2 == 1:
+        try:
+            browser.find_element(By.XPATH, '/html/body/div[2]/div/div[3]/div[2]/div[1]/div/div[1]/div[2]/a/span[2]').click()
+            time.sleep(1)
+            browser.find_element(By.XPATH, '/html/body/div[10]/div/label[3]/span').click()
+            time.sleep(1)
+            browser.find_element(By.CSS_SELECTOR, css_product_click).click()
+            time.sleep(2)
+            name = browser.find_element(By.XPATH, xpath_name_product_dns)
+            time.sleep(1)
+            price = browser.find_element(By.XPATH, xpath_price_dns)
+        except NoSuchElementException:
+            return 'товар не найден'
+        else:
+            name = name.text
+            price = price.text
+            price = price.split('₽')
+            browser.close()
+            stopper_1 += 1
+            finish = time.time()
+            res = finish - start
+            return name, price[0], res
 
 
-print(parser_dns())
+if __name__ == '__main__':
+    print(parser_dns())
 
 
