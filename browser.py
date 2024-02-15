@@ -16,3 +16,4 @@ def browser_init(url):
     driver.implicitly_wait(50)
     driver.get(url)
     return driver
+

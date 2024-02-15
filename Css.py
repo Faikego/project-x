@@ -16,4 +16,4 @@ css_kc_link = '#__layout > div > div:nth-child(2) > div:nth-child(2) > div > div
 css_price_kc = '#__layout > div > div:nth-child(2) > div:nth-child(2) > div > div > div.d31c1 > div._9e75e > div:nth-child(1) > div._2694e > div._6c337 > div._4de6c > div'
 css_name_kc = '#__layout > div > div:nth-child(2) > div:nth-child(2) > div > div > div.d31c1 > div._9e75e > div:nth-child(1) > div._38940 > a > span'
 
-
+token = '6451064217:AAGw4nf-4IKVDknIii7HrILbp2g6dsfZUaQ'

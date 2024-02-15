@@ -6,8 +6,7 @@ from selenium.common.exceptions import NoSuchElementException
 from Css import *
 
 
-
-def parser_eld(target):
+def parser_kc(target):
     link = None
 
     browser = browser_init('https://kcentr.ru')
@@ -30,14 +29,17 @@ def parser_eld(target):
         time.sleep(1)
         price = browser.find_element(By.CSS_SELECTOR, css_price_kc).text
         name = browser.find_element(By.CSS_SELECTOR, css_name_kc).text
+        text = (f'Название товара: {name}\n'
+                f'Ссылка на товар: {link}\n'
+                f'Цена товара: {price}')
 
         browser.close()
     except NoSuchElementException:
         browser.close()
         return 'товар не найден'
 
-    return name, link, price
+    return text
 
 
 if __name__ == '__main__':
-    print(parser_eld('LOGITECH G435'))
+    print(parser_kc('LOGITECH G435'))

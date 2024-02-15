@@ -10,7 +10,7 @@ from Css import *
 def parser_zeo(target):
     browser = browser_init('https://zeon18.ru')
     try:
-        time.sleep(1)
+        time.sleep(2)
         browser.find_element(By.CSS_SELECTOR, css_city).click()
         browser.find_element(By.CSS_SELECTOR, css_my_city).click()
         time.sleep(1)
@@ -27,13 +27,16 @@ def parser_zeo(target):
             link = i.get_attribute('href')
         price = browser.find_element(By.CSS_SELECTOR, css_price_zeon).text
         name = browser.find_element(By.CSS_SELECTOR, css_product_zeon).text
+        text = (f'Название товара: {name}\n'
+                f'Ссылка на товар: {link}\n'
+                f'Цена товара: {price}')
         browser.close()
 
     except NoSuchElementException:
         browser.close()
         return 'товар не найден'
 
-    return name, link, price
+    return text
 
 
 if __name__ == '__main__':
