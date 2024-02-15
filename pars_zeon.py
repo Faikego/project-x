@@ -7,18 +7,18 @@ from selenium.common.exceptions import NoSuchElementException
 from Css import *
 
 
-def parser_zeo():
+def parser_zeo(target):
     browser = browser_init('https://zeon18.ru')
     try:
         time.sleep(1)
         browser.find_element(By.CSS_SELECTOR, css_city).click()
         browser.find_element(By.CSS_SELECTOR, css_my_city).click()
         time.sleep(1)
-        browser.find_element(By.CSS_SELECTOR, css_search_zeon).send_keys('LOGITECH G435')
+        browser.find_element(By.CSS_SELECTOR, css_search_zeon).send_keys(target)
         browser.find_element(By.CSS_SELECTOR, css_search_zeon_click).click()
         time.sleep(1)
-        browser.find_element(By.CSS_SELECTOR, 'body > div.site-wrapper > div > div.site-content > div > div.laypart-main > div > div > div.catalog-browser-header > div.catalog-browser-controls.if-size-pc > div:nth-child(1) > div > div.catalog-combobox-current.logic-dropdown-current').click()
-        browser.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div/div[2]/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div[2]/div').click()
+        browser.find_element(By.CSS_SELECTOR, css_sort_zeon).click()
+        browser.find_element(By.XPATH, xpath_sort_zeon).click()
 
         time.sleep(1)
         product = browser.find_elements(By.CSS_SELECTOR, css_product_zeon)
@@ -37,4 +37,4 @@ def parser_zeo():
 
 
 if __name__ == '__main__':
-    print(parser_zeo())
+    print(parser_zeo('LOGITECH G435'))

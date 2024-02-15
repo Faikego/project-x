@@ -5,10 +5,9 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from Css import *
 
-target = 'LOGITECH G435'
 
 
-def parser_eld():
+def parser_eld(target):
     link = None
 
     browser = browser_init('https://kcentr.ru')
@@ -30,7 +29,7 @@ def parser_eld():
             link = i.get_attribute('href')
         time.sleep(1)
         price = browser.find_element(By.CSS_SELECTOR, css_price_kc).text
-        name = browser.find_element(By.CSS_SELECTOR, '#__layout > div > div:nth-child(2) > div:nth-child(2) > div > div > div.d31c1 > div._9e75e > div:nth-child(1) > div._38940 > a > span').text
+        name = browser.find_element(By.CSS_SELECTOR, css_name_kc).text
 
         browser.close()
     except NoSuchElementException:
@@ -41,4 +40,4 @@ def parser_eld():
 
 
 if __name__ == '__main__':
-    print(parser_eld())
+    print(parser_eld('LOGITECH G435'))
