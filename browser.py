@@ -13,6 +13,6 @@ def browser_init(url):
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
     driver = uc.Chrome(service=service)
-    # driver.implicitly_wait(5)
+    driver.implicitly_wait(50)
     driver.get(url)
     return driver

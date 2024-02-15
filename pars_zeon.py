@@ -3,31 +3,38 @@ import time
 
 from browser import browser_init
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
 from Css import *
 
 
-def parser():
+def parser_zeo():
     browser = browser_init('https://zeon18.ru')
-    time.sleep(1)
-    browser.find_element(By.CSS_SELECTOR, css_sity).click()
-    browser.find_element(By.CSS_SELECTOR, css_mysity).click()
-    time.sleep(1)
-    browser.find_element(By.CSS_SELECTOR, css_search_zeon).send_keys('LOGITECH G435')
-    browser.find_element(By.CSS_SELECTOR, css_search_zeon_click).click()
-    time.sleep(1)
-    elem_hover = browser.find_element(By.CSS_SELECTOR, 'body > div.site-wrapper > div > div.site-content > div > div.laypart-main > div > div > div.catalog-browser-header.type-multisearch > div.catalog-browser-controls.if-size-pc > div:nth-child(1) > div > div.catalog-combobox-current.logic-dropdown-current')
-    elem_click = browser.find_element(By.CSS_SELECTOR, 'body > div.site-wrapper > div > div.site-content > div > div.laypart-main > div > div > div.catalog-browser-header.type-multisearch > div.catalog-browser-controls.if-size-pc > div:nth-child(1) > div > div.catalog-combobox-dropdown.logic-dropdown-menu > div > div:nth-child(2) > div')
+    try:
+        time.sleep(1)
+        browser.find_element(By.CSS_SELECTOR, css_city).click()
+        browser.find_element(By.CSS_SELECTOR, css_my_city).click()
+        time.sleep(1)
+        browser.find_element(By.CSS_SELECTOR, css_search_zeon).send_keys('LOGITECH G435')
+        browser.find_element(By.CSS_SELECTOR, css_search_zeon_click).click()
+        time.sleep(1)
+        browser.find_element(By.CSS_SELECTOR, 'body > div.site-wrapper > div > div.site-content > div > div.laypart-main > div > div > div.catalog-browser-header > div.catalog-browser-controls.if-size-pc > div:nth-child(1) > div > div.catalog-combobox-current.logic-dropdown-current').click()
+        browser.find_element(By.XPATH, '/html/body/div[2]/div/div[4]/div/div[2]/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div[2]/div').click()
 
-    browser.move_to_element(elem_hover)
-    browser.click(elem_click)
-    browser.perform()
-    product = browser.find_elements(By.CSS_SELECTOR, css_product_zeon)
-    link = None
-    for i in product:
-        link = i.get_attribute('href')
-    price = browser.find_element(By.CSS_SELECTOR, css_price_zeon).text
+        time.sleep(1)
+        product = browser.find_elements(By.CSS_SELECTOR, css_product_zeon)
+        link = None
+        for i in product:
+            link = i.get_attribute('href')
+        price = browser.find_element(By.CSS_SELECTOR, css_price_zeon).text
+        name = browser.find_element(By.CSS_SELECTOR, css_product_zeon).text
+        browser.close()
 
-    return link, price
+    except NoSuchElementException:
+        browser.close()
+        return 'товар не найден'
+
+    return name, link, price
 
 
-print(parser())
+if __name__ == '__main__':
+    print(parser_zeo())
