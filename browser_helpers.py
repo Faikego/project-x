@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 def browser_init (url):
     '''
-    Временная функция, инициирует браузер с нужным урлом, принимает урл возвращает драйвер
+    Инициирует браузер с нужным урлом, принимает урл возвращает драйвер
     :param url:
     :return:
     '''

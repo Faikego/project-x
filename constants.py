@@ -1,8 +1,9 @@
 #Список селекторов для парсера Ситилинка
 citi_selectors=[
-    '#__next > div > main > div.app-catalog-c3ky1w.eg0q2u20 > div > div.app-catalog-1pwu1hf.ewjft870 > section > div.e12wdlvo0.app-catalog-1kzfd3s.e1loosed0 > div.egwx31q0.app-catalog-1v1smf8.e1loosed0 > div.app-catalog-14dnwby.ehj6uxk0 > div.fresnel-container.fresnel-greaterThanOrEqual-tabletL > div > button:nth-child(2)',
-    '#__next > div > main > div.app-catalog-c3ky1w.eg0q2u20 > div > div.app-catalog-1pwu1hf.ewjft870 > section > div.e12wdlvo0.app-catalog-1kzfd3s.e1loosed0 > div.ehanbgo0.app-catalog-1rygk07.e1loosed0 > div:nth-child(1) > div > div > div.app-catalog-gt3vul.eyol3820 > div.app-catalog-npkzzu.e6iq6rb0 > button > span > div.app-catalog-12y5rbz.elmcou80 > span > span > span.e1j9birj0.e106ikdt0.app-catalog-56qww8.e1gjr6xo0',
-    '#__next > div > main > div.app-catalog-c3ky1w.eg0q2u20 > div > div.app-catalog-1pwu1hf.ewjft870 > section > div.e12wdlvo0.app-catalog-1kzfd3s.e1loosed0 > div.ehanbgo0.app-catalog-1rygk07.e1loosed0 > div:nth-child(1) > div > div > div.app-catalog-632im3.e1sv2xw70 > div.app-catalog-oacxam.e1xes8vl0'
+    '//*[@id="__next"]/div/main/div[1]/div/div[2]/section/div[2]/div[1]/div[2]/div[2]/div/button[2]',
+    '//*[@id="__next"]/div/main/div[1]/div/div[2]/section/div[2]/div[2]/div[1]/div/div[3]/div[1]/a',
+    '//*[@id="__next"]/div/main/div[1]/div/div[2]/section/div[2]/div[2]/div[1]/div/div[7]/div[1]/div[2]/span/span/span[1]',
+    '.css-hyxlzm'
  ]
 #Список селекторов для парсера Никса
 nix_selectors=[
@@ -12,3 +13,22 @@ nix_selectors=[
     '.cell-half-price',
     '.cell-name'
 ]
+
+css_search_zeon = 'body > div.site-wrapper > div > header > div > div.site-header-menu.if-size-pc > div.site-header-menu-main > div.site-header-search > div > form > div > input'
+css_search_zeon_click = 'body > div.site-wrapper > div > header > div > div.site-header-menu.if-size-pc > div.site-header-menu-main > div.site-header-search > div > form > button'
+css_product_zeon = 'body > div.site-wrapper > div > div.site-content > div > div.laypart-main > div > div > div.catalog-browser-content > div > div > div > div:nth-child(1) > article > div.catalog-item-body > div.catalog-item-except-picture > div.catalog-item-info > a'
+css_price_zeon = 'body > div.site-wrapper > div > div.site-content > div > div.laypart-main > div > div > div.catalog-browser-content > div > div > div > div:nth-child(1) > article > div.catalog-item-body > div.catalog-item-except-picture > div.catalog-item-shop > div.if-size-pc > div > div.catalog-item-price-main > span'
+css_city = 'body > div.site-wrapper > div > header > div > div.site-header-menu.if-size-pc > div.site-header-menu-main > div.site-header-select-city-wrapper > div > div.dropdown-current.site-header-select-city-icon.with-icon-map-point > span > span'
+css_my_city = 'body > div.site-wrapper > div > header > div > div.site-header-menu.if-size-pc > div.site-header-menu-main > div.site-header-select-city-wrapper > div > div.dropdown-menu > ul > li:nth-child(4) > a > span'
+css_sort_zeon = 'body > div.site-wrapper > div > div.site-content > div > div.laypart-main > div > div > div.catalog-browser-header > div.catalog-browser-controls.if-size-pc > div:nth-child(1) > div > div.catalog-combobox-current.logic-dropdown-current'
+xpath_sort_zeon = '/html/body/div[2]/div/div[4]/div/div[2]/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div[2]/div'
+
+css_city_kc = '#__layout > div > div._5cc02.e23f0 > div > div.eb18d > button._730f5._9088c._573f6.db695'
+css_search_kc = '#__layout > div > div.header > div.header__main._592df > div > form > div.d6199.b2d48.undefined.c4952.b7a63 > div > input'
+css_search_kc_click = '#__layout > div > div.header > div.header__main._592df > div > form > button'
+xpath_price_min_kc = '/html/body/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/button'
+xpath_price_min_kc_click = '/html/body/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/button[5]'
+css_kc_link = '#__layout > div > div:nth-child(2) > div:nth-child(2) > div > div > div.d31c1 > div._9e75e > div:nth-child(1) > div._38940 > a'
+css_price_kc = '#__layout > div > div:nth-child(2) > div:nth-child(2) > div > div > div.d31c1 > div._9e75e > div:nth-child(1) > div._2694e > div._6c337 > div._4de6c > div'
+css_name_kc = '#__layout > div > div:nth-child(2) > div:nth-child(2) > div > div > div.d31c1 > div._9e75e > div:nth-child(1) > div._38940 > a > span'
+
