@@ -37,13 +37,9 @@ def parser_center(target):
         browser.close()
     except NoSuchElementException:
         browser.close()
-        return None
-    else:
-        text = (f'Название товара: {name}\n'
-                f'Ссылка на товар: {link}\n'
-                f'Цена товара: {price}\n'
-                f'___________\n')
-        return text
+        return 'товар не найден'
+
+    return price , name ,link
 
 
 if __name__ == '__main__':

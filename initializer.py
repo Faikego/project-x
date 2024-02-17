@@ -3,27 +3,36 @@ from citi import parser_citi
 from nix import parser_nix
 from center import parser_center
 
-
-def initializer(target):
-    text = []
-    kc = parser_center(target)
-    zeo = parser_zeo(target)
-    cit = parser_citi(target)
-    nix = parser_nix(target)
-
-    if kc is not None:
-        text += kc
-    if zeo is not None:
-        text += kc
-    if cit is not None:
-        text += kc
-    if nix is not None:
-        text += kc
-
+def initializer (target):
+    price_list=[]
+    name_list=[]
+    link_list=[]
+    magazine_list=['zeon','nix','citi','center']
+    price,name,link=parser_zeo(target)
+    price_list.append(price)
+    name_list.append(name)
+    link_list.append(link)
+    price,name,link=parser_nix(target)
+    price_list.append(price)
+    name_list.append(name)
+    link_list.append(link)
+    price,name,link=parser_citi(target)
+    price_list.append(price)
+    name_list.append(name)
+    link_list.append(link)
+    price,name,link=parser_center(target)
+    price_list.append(price)
+    name_list.append(name)
+    link_list.append(link)
+    min_price=min(price_list)
+    min_price_index=price_list.index(min_price)
+    text = (
+            "НАЗВАНИЕ ТОВАРА-" + str (name_list[min_price_index]) +
+            "\nЦЕНА-" + str(price_list[min_price_index]) +
+            "\nМАГАЗИН-" + str(magazine_list[min_price_index])+
+            "\nССЫЛКА- " + str(link_list[min_price_index])
+    )
     return text
-
-
-if __name__ == '__main__':
-    print(initializer('LOGITECH G435'))
+print(initializer('Смартфон Iphone 13'))
 
 

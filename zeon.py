@@ -36,14 +36,9 @@ def parser_zeo(target):
 
     except NoSuchElementException:
         browser.close()
-        return None
+        return 'товар не найден'
 
-    else:
-        text = (f'Название товара: {name}\n'
-                f'Ссылка на товар: {link}\n'
-                f'Цена товара: {price}\n'
-                f'___________\n')
-        return text
+    return price , name
 
 
 if __name__ == '__main__':

@@ -4,9 +4,9 @@ from selenium.webdriver.common.by import By
 from browser_helpers import browser_init
 from selenium.webdriver.common.keys import Keys
 from constants import *
+target='Смартфон iphone 13'
 
-
-def parser_citi(target):
+def parser_citi (target):
     '''
     Функция по поиску нужного товара в Ситилинке,
     Принимает запрос с названием товара
@@ -20,14 +20,13 @@ def parser_citi(target):
     time.sleep(0.2)
     element.send_keys(target)
     time.sleep(0.2)
-    element.send_keys(Keys.ENTER)
+    element.send_keys(Keys.ENTER);
     time.sleep(2)
-    element = driver.find_element(By.XPATH, xpath_sort_button_citi).click()
-    time.sleep(2)
-    price = driver.find_element(By.XPATH, xpath_price_citi).text
-    name = driver.find_element(By.XPATH, xpath_name_citi).text
-    unsorted_links = driver.find_elements(By.XPATH, xpath_links_citi)
-    link = None
+    element=driver.find_element(By.XPATH,xpath_sort_button_citi).click()
+    time.sleep (2)
+    price=driver.find_element(By.XPATH,xpath_price_citi).text
+    name=driver.find_element(By.XPATH,xpath_name_citi).text
+    unsorted_links=driver.find_elements(By.XPATH,xpath_links_citi)
     for i in unsorted_links:
         link = i.get_attribute('href')
-    return price, name, link
+    return price , name , link
