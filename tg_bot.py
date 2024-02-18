@@ -1,15 +1,12 @@
 import telebot
-from Css import token
 from initializer import initializer
 
 bot = telebot.TeleBot(token)
-
 
 @bot.message_handler(commands=['start', 'help'])
 def help(message: telebot.types.Message):
     text = ("Введите '/search название товара котрый хотите найти.'")
     bot.reply_to(message, text)
-
 
 @bot.message_handler(commands=['search'])
 def search(message):
