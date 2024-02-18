@@ -14,6 +14,7 @@ def parser_citi (target):
     :param target:
     :return:
     '''
+
     driver = browser_init('https://www.citilink.ru')
     element = driver.find_element(By.CSS_SELECTOR,css_search_citi)
     element.click()
