@@ -35,11 +35,18 @@ def parser_center(target):
         price = browser.find_element(By.CSS_SELECTOR, css_price_kc).text
         name = browser.find_element(By.CSS_SELECTOR, css_name_kc).text
         browser.close()
+        text = (
+                    "НАЗВАНИЕ ТОВАРА-" + str(name) +
+                    "\nЦЕНА-" + str(price) +
+                    "\nМАГАЗИН-" + str('Никс') +
+                    "\nССЫЛКА- " + str(link)
+            )
     except NoSuchElementException:
         browser.close()
-        return 'товар не найден'
+        text=''
+        return text
 
-    return price , name ,link
+    return text
 
 
 if __name__ == '__main__':

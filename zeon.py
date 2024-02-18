@@ -16,9 +16,6 @@ def parser_zeo(target):
     '''
     browser = browser_init('https://zeon18.ru')
     try:
-        #time.sleep(1)
-        #browser.find_element(By.CSS_SELECTOR, css_city).click()
-        #browser.find_element(By.CSS_SELECTOR, css_my_city).click()
         time.sleep(1)
         browser.find_element(By.CSS_SELECTOR, css_search_zeon).send_keys(target)
         browser.find_element(By.CSS_SELECTOR, css_search_zeon_click).click()
@@ -33,12 +30,18 @@ def parser_zeo(target):
         price = browser.find_element(By.CSS_SELECTOR, css_price_zeon).text
         name = browser.find_element(By.CSS_SELECTOR, css_product_zeon).text
         browser.close()
-
+        text = (
+                "НАЗВАНИЕ ТОВАРА-" + str(name) +
+                "\nЦЕНА-" + str(price) +
+                "\nМАГАЗИН-" + str('Зеон') +
+                "\nССЫЛКА- " + str(link)
+        )
     except NoSuchElementException:
         browser.close()
-        return 'товар не найден'
+        text=''
+        return text
 
-    return price , name
+    return text
 
 
 if __name__ == '__main__':
