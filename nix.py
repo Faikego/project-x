@@ -1,13 +1,14 @@
-from datetime import time
 import time
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
 from browser_helpers import browser_init
 from constants import *
-from selenium.common.exceptions import NoSuchElementException
+
 
 def parser_nix(target):
     '''
-    Функция по поиску искомого в никсе, парсит все достижимые для него ценники в словарь (Название+ценник) и выбирает наименьшую сумму
+    Функция по поиску искомого в никсе
+    Парсит все достижимые для него ценники в словарь (Название+ценник) и выбирает наименьшую сумму
     Принимает название товара
     Возвращает пару сумма+имя
     :param target:
@@ -37,4 +38,3 @@ def parser_nix(target):
         text=''
         return text
     return text
-
