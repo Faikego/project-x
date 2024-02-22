@@ -8,7 +8,7 @@
 # Содержание проекта
 
 Основной файл - tb_bot.py
-```
+
 Файлы со вспомогательными скриптами - browser_helpers.py, nix.py, citi.py,center.py,zeon.py,initializer.py
 
 # Requirements
