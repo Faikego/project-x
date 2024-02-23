@@ -1,10 +1,10 @@
-from datetime import time
 import time
 from selenium.webdriver.common.by import By
-from browser_helpers import browser_init
-from selenium.webdriver.common.keys import Keys
-from constants import *
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.keys import Keys
+from browser_helpers import browser_init
+from constants import *
+
 
 def parser_citi (target):
     '''
@@ -41,3 +41,6 @@ def parser_citi (target):
         text=''
         return text
     return text
+
+if __name__ == '__main__':
+    print(parser_citi('LOGITECH G435'))

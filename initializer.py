@@ -11,11 +11,8 @@ def initializer (target):
 
     text = (
         zeo_text+
-        '========================'+
         nix_text+
-        '========================'+
         citi_text+
-        '========================'+
         center_text
     )
     return text

@@ -1,8 +1,7 @@
-from datetime import time
 import time
-from browser_helpers import browser_init
-from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+from browser_helpers import browser_init
 from constants import *
 
 

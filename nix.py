@@ -38,3 +38,6 @@ def parser_nix(target):
         text=''
         return text
     return text
+
+if __name__ == '__main__':
+    print(parser_nix('LOGITECH G435'))
