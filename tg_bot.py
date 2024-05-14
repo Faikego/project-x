@@ -1,6 +1,6 @@
 import telebot
 from initializer import initializer
-token_telega=open('token','r')
+token_telega='6451064217:AAGw4nf-4IKVDknIii7HrILbp2g6dsfZUaQ'
 bot = telebot.TeleBot(token_telega)
 
 @bot.message_handler(commands=['start', 'help'])
