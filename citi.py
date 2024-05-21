@@ -40,7 +40,7 @@ def parser_citi (target):
         driver.close()
         text=''
         return text
-    return text
+    return text,price
 
 if __name__ == '__main__':
     print(parser_citi('LOGITECH G435'))

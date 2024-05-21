@@ -46,7 +46,7 @@ def parser_center(target):
         text=''
         return text
 
-    return text
+    return text,price
 
 
 if __name__ == '__main__':

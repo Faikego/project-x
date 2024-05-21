@@ -1,3 +1,20 @@
+import statistics
+def avg_null_destroyer (destroyer_list):
+    '''
+    Функция по получению средней цены из списка с предварительным удалением None из листа
+    Возвращает список цен и среднюю цену на таргет
+    :param destroyer_list:
+    :return:
+    destroyer_list,avg_price
+    '''
+    while None in destroyer_list:
+        destroyer_list.remove (None)
+    avg_price=statistics.mean(destroyer_list)
+    return destroyer_list,avg_price
+
+#def sql_appender(item,avg_price,price_list):
+
+
 def list_separator(list):
     list = str(list)
     true_list=[]
@@ -12,4 +29,5 @@ def list_separator(list):
             list.pop(counter)
     print(true_list,counter)
     return true_list
-list_separator('+\nСмартфон Infinix HOT 30i NFC 4 / 128Gb < X669D > Black (1.6GHz, 4Gb, 6.56"1612x720 IPS, 4G+WiFi+BT, 128Gb+microSD, 13+0.08Mpx)\nЕСТЬ\n10 366 10 912')
+
+

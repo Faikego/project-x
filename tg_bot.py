@@ -18,6 +18,7 @@ def search(message):
     else:
         bot.reply_to(message, 'Поиск займет около 2 минут')
         bot.reply_to(message, initializer(keywords))
+        target_message=message
 
 
 bot.polling(none_stop=True)

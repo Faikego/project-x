@@ -37,7 +37,7 @@ def parser_nix(target):
         driver.close()
         text=''
         return text
-    return text
+    return text,price
 
 if __name__ == '__main__':
     print(parser_nix('LOGITECH G435'))
