@@ -41,8 +41,11 @@ def sql_appender (item,avg_price,price_list):
     :return:
     '''
     price_list=str(price_list)
-    connector = psycopg2.connect(dbname='diplom_db', user='db_user',
-                                 password='P@$$w0rd', host='localhost')
+    try:
+        connector = psycopg2.connect(dbname='diplom_db', user='db_user',
+                                     password='P@$$w0rd', host='localhost')
+    except:
+        sql_creator()
     with connector.cursor() as cursor:
         connector.autocommit = True
         values = [
